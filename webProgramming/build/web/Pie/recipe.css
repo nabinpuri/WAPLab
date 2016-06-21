@@ -1,0 +1,56 @@
+/*
+Author: Nabin Puri
+Assignment1: pie.html
+*/
+/* 
+    Created on : Jun 21, 2016, 2:25:07 PM
+    Author     : 984984
+*/
+body{
+    color:#404040;
+    font-family: Georgia,Garamond,serif;
+    background-image: url("http://courses.cs.washington.edu/courses/cse190m/09sp/homework/1/silverware.jpg");
+    background-repeat: repeat;
+    background-color:white;
+}
+h2{
+    color:#A4A400;
+    display:table;
+    background-color: #F0F0F0 ;
+    font-family: Lucida Sans Unicode, Helvetica, Arial,sans-serif;
+    letter-spacing: 0.25em;
+}
+.headings{
+    text-align: center;
+}
+a{
+    color:#A4A400;
+}
+abbr{
+    text-decoration: underline
+}
+pre{
+    font-family: monospace;
+}
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.eachComments{
+    background-color: #FFFFA8;
+}
+.comments{
+    font-style: italic;
+}
+.makeStrong{
+    font-weight: bold;
+}
+.copyright{
+    text-align: right;
+}
+ul{
+    list-style-image: url('../img/pie_bullet.png');
+}
+.pieImage{
+    margin-top: 10px;
+}
