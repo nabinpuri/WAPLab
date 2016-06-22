@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 22, 2016, 11:14:16 AM
+    Author     : 984984
+*/
+body{
+    background-image: url('img/background.png');
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 8pt;
+    text-align: center;
+}
+#banner{
+    text-align: center;
+    width:100%;
+    padding-top: 0;
+    background-image:url('img/bannerbg.png'); 
+    background-repeat: repeat-x;
+    
+}
+.headings{
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+}
+.content{
+    width:800px;
+    height: 900px;
+    border: 4px solid gray;
+    border-radius: 20px;
+    margin: auto;
+    overflow:hidden;
+}
+.right-overview{
+    float:right;
+    width:250px;
+    text-align: left;
+    background-color:  green;
+    height:100%;
+}
+.left-review{
+    float:left;
+    width:550px;
+    overflow: hidden;
+   // background-color: blue;
+    height:100%;
+    //clear: both;
+    
+}
+.rottenRate{
+    background-image:url('img/rbg.png'); 
+    background-repeat: repeat-x;
+    text-align: left;
+    font-size: 48pt;
+    font-weight: bold;
+    color:Red;
+    vertical-align:middle;
+}
+.rottenRate >img{
+    height:83px;
+}
+.column1{
+    width:47%;
+    height: 100%;
+    border: 2px solid;
+    display:inline-block;
+   //overflow:hidden;
+   //clear:both;
+}
+.column2{
+    width:47%;
+    height: 100%;
+    border: 2px solid;
+    display:inline-block;
+    //overflow:hidden;
+    //clear:both;
+}
+.columns{
+    display:block;
+    height: 100%;
+    background-color: blue;
+}
+.cells{
+    border: 2px solid;
+}
