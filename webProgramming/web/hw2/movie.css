@@ -12,6 +12,8 @@ body{
     font-family: Verdana, Tahoma, sans-serif;
     font-size: 8pt;
     text-align: center;
+    width:100vw;
+    
 }
 #banner{
     text-align: center;
@@ -25,29 +27,36 @@ body{
     text-align: center;
     font-size: 24pt;
     font-weight: bold;
+    text-shadow: 3px 3px #999999;
 }
 .content{
+    display:inline-block;
     width:800px;
-    height: 900px;
     border: 4px solid gray;
     border-radius: 20px;
     margin: auto;
     overflow:hidden;
+    text-align: center;
 }
 .right-overview{
     float:right;
     width:250px;
     text-align: left;
-    background-color:  green;
+    background-color:#A2B964;
     height:100%;
+    padding-bottom: 10pt;
+}
+.overview-content{
+    padding-left:10px;
+    font-size: 8pt;
+    font-family: Arial,sans-serif;
+    
 }
 .left-review{
     float:left;
     width:550px;
     overflow: hidden;
-   // background-color: blue;
     height:100%;
-    //clear: both;
     
 }
 .rottenRate{
@@ -57,32 +66,89 @@ body{
     font-size: 48pt;
     font-weight: bold;
     color:Red;
-    vertical-align:middle;
-}
-.rottenRate >img{
+    vertical-align: middle;
     height:83px;
+}
+.rottenRate > img{
+    height:83px;
+    float:left;
+     
 }
 .column1{
     width:47%;
     height: 100%;
-    border: 2px solid;
     display:inline-block;
-   //overflow:hidden;
-   //clear:both;
+    vertical-align: top;
+    
 }
 .column2{
+    margin-left: 2%;
     width:47%;
     height: 100%;
-    border: 2px solid;
     display:inline-block;
-    //overflow:hidden;
-    //clear:both;
+    vertical-align: top;
 }
 .columns{
     display:block;
     height: 100%;
-    background-color: blue;
+    margin-top:10px;
+}
+.reviews{
+    font-size: 8pt;
+    font-weight: bold;
+    background-color:#E8DC9B;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 8px 8px 8px 8px;
+   text-align: left;
+   overflow:hidden;
+    
+}
+.reviews > p> img{
+    float:left;
+}
+.reviewerDetails{
+    font-style: italic;
+    overflow: hidden;
 }
 .cells{
-    border: 2px solid;
+    text-align: left;
+    margin-bottom:20pt;
+    
+}
+.reviewerDetails > p> img{
+    margin-right: 5px;
+    float:left;
+}
+dt{
+    font-weight: bold;
+}
+dd{
+    padding-bottom: 10px;
+}
+.footer{
+    clear:both;
+    background-color: #A2B964;
+    margin-top:5px;
+    height:100%;
+    width:100%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1px;
+}
+.validator{
+    height: 100%;
+    vertical-align: bottom;
+}
+.validate{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+.mainContainer{
+    display:block;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    position: relative;
 }
