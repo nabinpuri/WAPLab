@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+Author: Nabin Puri
+WAP-HW4
+-->
+<html>
+    <head>
+        <title>Sign Up</title>
+        <link href="nerdluv.css" type="text/css" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="top">
+          <iframe src="top.html" name="targetframe"
+                  allowTransparency="true" scrolling="no" frameborder="0" >
+        </iframe>
+        </div>
+        <div>
+            <form>
+                <fieldset>
+                    <legend>
+                        New User SignUp
+                    </legend>
+                    <div>
+                        <div class="row">
+                            <div class="column">
+                                <label> Name:</label>
+                            </div>
+                            <div>
+                                <input type="text" name="name" value="" size="16"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <label> Gender</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="gender" value="M"/>Male</label>  
+                                <label><input type="radio" name="gender" value="F" checked/>Female</label>  
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <label> Age</label>
+                            </div>
+                            <div>
+                                <input type="text" name="age" value="" size="6" maxlength="2"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <label> Personality Type</label>
+                            </div>
+                            <div>
+                                <input type="text" name="name" value=""  size="6" maxlength="4"/>
+                                <a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">
+                                   ( Don't you know? )
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <label> Favorite OS</label>
+                            </div>
+                            <div >
+                                <select name="favoriteOS">
+                                    <option selected value="1">Windows</option>
+                                    <option value="2">Mac OS X</option>
+                                    <option value="3">Linux</option>
+                              </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <label> Seeking Age</label>
+                            </div>
+                            <div>
+                                <input type="text" name="min" value="" size="6" maxlength="2" placeholder="min"/>
+                                <label> to </label>
+                                <input type="text" name="max" value="" size="6" maxlength="2" placeholder="max"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <input type="submit" name="max" value="Sign Up"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="bottom">
+            <p>
+			This page is for single nerds to meet and date each other! 
+                        Type in your personal information and wait for the nerdly 
+                        luv to begin!  Thank you for using our site.
+		</p>
+		<footer>
+			<hr />
+			<p>
+				Results and page (C) Copyright NerdLuv Inc.
+			</p>
+
+			<ul>
+				<li>
+					<a href="../index.html">
+						<img src="images/back.gif" alt="icon" />
+						Back to front page
+					</a>
+				</li>
+			</ul>
+
+			<a href="https://webster.cs.washington.edu/validate-html.php">
+				<img src="images/w3c-html5.png" alt="Valid HTML" />
+			</a>
+			<a href="https://webster.cs.washington.edu/validate-css.php">
+				<img src="images/w3c-css.png" alt="Valid CSS" />
+			</a>
+		</footer>
+        </div>
+    </body>
+</html>
