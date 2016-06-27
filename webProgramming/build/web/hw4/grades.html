@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+Author: Nabin Puri
+WAP-HW4
+-->
+<html>
+    <head>
+        <title>Grades</title>
+        <link href="nerdluv.css" type="text/css" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="top">
+          <iframe src="top.html" name="targetframe"
+                  allowTransparency="true" scrolling="no" frameborder="0" >
+        </iframe>
+        </div>
+        <div>
+            <form>
+                <fieldset>
+			<legend>Get Grade:</legend>
+			<div class="for-group">
+				<label class="left">Student Name:</label>
+				<input type="text" class="medium" name="sname" />
+			</div>
+			<div class="for-group">
+				<label class="left">Student ID:</label>
+				<input type="text" class="medium" name="sid" />
+			</div>			
+			<div class="form-group">
+				<label class="left">Homework:</label>
+				<select name="hw">
+					<option>Pie Recipe</option>
+					<option>Movie Review</option>
+					<option>Signup Form</option>
+					<option>Grade Exercise</option>
+					<option>Quiz App</option>
+					<option>Written Quiz</option>
+				</select>
+			</div>
+			<div class="for-group">
+				<label class="left">Entry</label>
+				<label><input type="radio" name="entry" value="01/2016" />January 2016</label>
+				<label><input type="radio" name="entry" value="01/2016" />April 2016</label>
+			</div>
+			<div class="for-group">
+				<label class="left">Confirm</label>
+				<label><input type="checkbox" name="confirm"></label>
+			</div>
+			<div class="form-group">
+				<input type="hidden" name="signup" value="1">
+				<input type="submit" value="Signup" />
+			</div>			
+		</fieldset>
+            </form>
+        </div>
+        <div class="bottom">
+            <p>
+			This page is for single nerds to meet and date each other! 
+                        Type in your personal information and wait for the nerdly 
+                        luv to begin!  Thank you for using our site.
+		</p>
+		<footer>
+			<hr />
+			<p>
+				Results and page (C) Copyright NerdLuv Inc.
+			</p>
+
+			<ul>
+				<li>
+					<a href="../index.html">
+						<img src="images/back.gif" alt="icon" />
+						Back to front page
+					</a>
+				</li>
+			</ul>
+
+			<a href="https://webster.cs.washington.edu/validate-html.php">
+				<img src="images/w3c-html5.png" alt="Valid HTML" />
+			</a>
+			<a href="https://webster.cs.washington.edu/validate-css.php">
+				<img src="images/w3c-css.png" alt="Valid CSS" />
+			</a>
+		</footer>
+        </div>
+    </body>
+</html>
