@@ -15,23 +15,43 @@
         <meta name=viewport content=width=device-width, initial-scale=1.0> 
     </head> 
     <body> 
-        <form method=POST action=quizServlet>
-            <%!((Quiz)request.getAttribute("person"))) %> 
-            <div style="border:1px solid blue; width:500px; float: left; padding-left: 10px; padding-bottom: 5px"> 
+        <form method='POST' action='QuizServlet'>
+            <% Quiz q = (Quiz)request.getAttribute("quiz");%> 
+            <div style="border:1px solid blue; width:500px; float: left; padding-left: 10px;
+                 padding-bottom: 5px; padding-top: 5px">
+                <div style="background-color:whitesmoke; height:10%">
+                <label>Enter Your age First: </label> 
+                <input type="text" name="age" value="<%=(String)request.getAttribute("age")%>"
+                       size='5'/>
+                <% if(request.getAttribute("message")!= null){%>
+                <div style="color:red">
+                 <%= (String) request.getAttribute("message")%>
+                 </div>
+                 <%}%>
+            </div>
             <h1><strong>The number Quiz</strong></h1> 
-            <p>Your current Score is &nbspscore</p> 
+            <p>Your current Score is &nbsp <%= q.getCurrentScore()%></p> 
             <p>Guess the Number in Sequence</p> 
-            <p> &nbspquestions</p> 
+            <p> &nbsp <%= (String)request.getAttribute("questions")%>
+                <Strong style="color:red">,?</Strong>&nbsp]</p> 
             <div> 
                 <strong> Your answer is:</strong> 
                 <input type=number name=answer value=0 size=5 required="required"/> 
-
                 <br> 
                 <br> 
-                <input type=submit name=submit value=submit/> 
+                <% if(request.getAttribute("wrongmessage")!= null){%>
+             <div style="color:red">
+              <%= ((String) request.getAttribute("wrongmessage"))%>
+              </div>
+             <%}%>
+                <input type=submit name=submit value="Next" /> 
+                &nbsp
+                &nbsp
+                <input type=button name=submit value="Hint" 
+                       onclick="alert('<%= q.getCurrentHint()%>')" /> 
             </div> 
         </div> 
         </form> 
 
     </body> 
-</html>;
+</html>

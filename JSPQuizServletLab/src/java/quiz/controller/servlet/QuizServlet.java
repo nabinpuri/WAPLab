@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import quiz.model.classes.Quiz;
 
 /**
@@ -60,12 +61,17 @@ public class QuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession s = request.getSession();
         String age= request.getParameter("age");
         String message=validateAge(age);
+        request.setAttribute("age", age);
         if(message.equals("goodTOGo")){
             Quiz quiz= new Quiz();
+            String question= quiz.getNextQuestion();
+            request.setAttribute("questions", question);
             request.setAttribute("quiz", quiz);  
+            s.setAttribute("quiz", quiz);
+            
              RequestDispatcher dispatch = request.getRequestDispatcher("Quiz.jsp");
              dispatch.forward(request, response);
         }
@@ -102,8 +108,92 @@ public class QuizServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            HttpSession s = request.getSession();
+            Quiz quiz = (Quiz) s.getAttribute("quiz");
+            request.setAttribute("",quiz);
+            
+            String age= request.getParameter("age");
+            String message=validateAge(age);
+            request.setAttribute("age", age);
+            
+            if(!message.equals("goodTOGo")){//check age
+                request.setAttribute("message", message);
+                String question= quiz.getCurrentQuestion();
+                request.setAttribute("questions", question);
+                request.setAttribute("quiz", quiz); 
+                s.setAttribute("quiz", quiz);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Quiz.jsp");
+                dispatch.forward(request, response);
+            }
+            else{
+                 if(quiz==null){
+                    quiz= new Quiz();
+                }
+                else if(quiz.getCurrentTryNo()<3){//check if already tried 3
+
+                    int answer= Integer.parseInt(request.getParameter("answer")) ;
+                    
+                    boolean verified=quiz.verifyAnswer(answer);//currentTryNoIncreases here
+
+                    if(verified){//check if answer correct
+                        gotoNextQUestion(quiz,request,response,s);
+                    }
+                    if(!verified && quiz.getCurrentTryNo()<3){//check if chance left
+                        String wrongmessage= "your  answer is wrong "+(3-quiz.getCurrentTryNo()+" chance remaining");
+                        request.setAttribute("wrongmessage", wrongmessage);
+                        String question= quiz.getCurrentQuestion();
+                        request.setAttribute("questions", question);
+
+                        request.setAttribute("quiz", quiz); 
+                        s.setAttribute("quiz", quiz);
+                        RequestDispatcher dispatch = request.getRequestDispatcher("Quiz.jsp");
+                        dispatch.forward(request, response);
+                    }
+                    else if(!verified && quiz.getCurrentTryNo()==3){//check if last try
+                        String wrongmessage= "You have tried all 3 times. The correct answer is "
+                                + quiz.getCorrectAnswer();
+                        request.setAttribute("wrongmessage", wrongmessage);
+                        String question= quiz.getCurrentQuestion();
+                        request.setAttribute("questions", question);
+                        
+                        request.setAttribute("quiz", quiz); 
+                        s.setAttribute("quiz", quiz);
+                        RequestDispatcher dispatch = request.getRequestDispatcher("Quiz.jsp");
+                        dispatch.forward(request, response);
+                    }
+                }
+                else{
+                    quiz.setCurrentTryNo(0);
+                    gotoNextQUestion(quiz,request,response,s);
+                }
+            }
+           
+            
         //processRequest(request, response);
     }
+    
+     private void gotoNextQUestion(Quiz quiz,HttpServletRequest request, HttpServletResponse response,HttpSession s) 
+             throws ServletException,IOException {
+                if(quiz.hasNext()){
+                 String question= quiz.getNextQuestion();
+                 request.setAttribute("quiz", quiz); 
+                 request.setAttribute("questions", question);
+                 //String hint= quiz.getCurrentHint();
+                 //request.setAttribute("hint", hint);
+                 s.setAttribute("quiz", quiz);
+                 RequestDispatcher dispatch = request.getRequestDispatcher("Quiz.jsp");
+                 dispatch.forward(request, response);
+                //out.print(page);
+                }
+                else{
+                    quiz.setQuizEnded(true);
+                 request.setAttribute("quiz", quiz);  
+                 RequestDispatcher dispatch = request.getRequestDispatcher("FinalPage.jsp");
+                 dispatch.forward(request, response);
+                
+            }
+    }
+        
 
     /**
      * Returns a short description of the servlet.
