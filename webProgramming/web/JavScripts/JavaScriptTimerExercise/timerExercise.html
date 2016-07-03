@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Javascript Excersises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <ol>
+        <li> <p>What is the difference between the following 2 statements</p>
+            <p>setTimeout(booyah, 2000);</p>
+            <p>setTimeout(booyah(), 2000);</p>
+            <p>Ans: setTimeout(booyah, 2000); calls the booyah function after waiting 2000
+                ms but setTimeout(booyah(), 2000);
+                calls the function immediately rather than waiting to 2000ms;</p>
+        </li>
+<li><p>What do the following 2 alerts display (answer without running the code)?</p>
+<code><pre>var myfunc = function(a, x) {
+                        return a * x;
+                    };
+       var x = myfunc(2, 3);
+       var y = myfunc; 
+        alert(x);
+        alert(y(2,3));</pre></code>
+<p>Ans: The two alerts will display the same output  i.e. 6 because both x and y are pointing to the same function.</p></li>
+<li><p>Write functions booyah1 and booyah2 so that in both cases below, an alert box comes up after 2 seconds that
+says “BOOYAH!”</p>
+<p>setTimeout(booyah1, 2000);</p>
+<p>setTimeout(booyah2(), 2000);</p>
+<p>Ans:</p>
+<pre>
+    function booyah1(){
+     alert("BOOYAH!");
+ }
+function booyah2(){
+    setTimeout(booyah1, 2000);
+}
+
+</pre>
+</li>
+<li> <p>What is "Unobtrusive Javascript"? What is the practical application of Unobtrusive Javascript (and the reasons
+for using it)?</p>
+    <p>Ans : Unobstrusive Javascript is a HTML having minimal javascript inside. It uses the DOM to attach and execute all javascript functions. 
+Unobstrucive javascript allows the separation of the website into three categories i.e the content, presentation and behavior.    </p></li>
+</ol>
+    </body>
+</html>
