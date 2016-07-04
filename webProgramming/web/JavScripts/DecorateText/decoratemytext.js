@@ -41,9 +41,11 @@ function grow(){
 function pigLatin(){
 	var txtArea=document.getElementById('text');
 	var words=txtArea.value;
-	var wordList=words.trim().split(" ");
+	var sentence=words.trim().split("\n");
 	var finalString="";
-	wordList.forEach(function(item){
+        sentence.forEach(function(items){
+            var wordList=Words(items);
+            wordList.forEach(function(item){
 		if(item.charAt(0).toLowerCase()!="a" 
 			&& item.charAt(0).toLowerCase()!="e" 
 			&& item.charAt(0).toLowerCase()!="i" 
@@ -54,25 +56,36 @@ function pigLatin(){
 			finalString +=" "+item+"ay ";
 		}
 
-	txtArea.value=finalString;	
-	})
-
-
+            	
+            });
+            finalString +="\n";
+        });
+        txtArea.value=finalString;
 }
-
+function Words(sentence){
+	var wordlist=sentence.trim().split(" ");
+	return wordlist;
+        
+}
 function malkovitch(){
 	var txtArea=document.getElementById('text');
 	var words=txtArea.value;
-	var wordList=words.trim().split(" ");
+	var sentence=words.trim().split("\n");
 	var final="";
-	wordList.forEach(function(item){
-		if(item.length>=5) {
+        sentence.forEach(function(items){
+            var wordList=Words(items);
+            wordList.forEach(function(item){
+                if(item.length>=5) {
 			final +=" Malkovich";
 		}
 		else {
 			final +=" "+item;
 		}
-	})
+
+            	
+            });
+            final +="\n";
+        });
 	txtArea.value=final;
 
 }
