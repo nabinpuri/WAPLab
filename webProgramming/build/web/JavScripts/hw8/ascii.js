@@ -87,27 +87,5 @@ function sizeChanged(){
     var choice=document.getElementById("ddSize");
     var text=document.getElementById("text");
     var value=choice.options[choice.selectedIndex].value;
-    switch(value){
-        case "tiny":
-            text.style.fontSize="7pt";
-            break;
-        case "small":
-            text.style.fontSize="10pt";
-            break;
-         case "medium":
-             text.style.fontSize="12pt";
-            break;
-         
-         case "large":
-             text.style.fontSize="16pt";
-            break;
-        case "xlarge":
-            text.style.fontSize="24pt";
-            break;
-         case "xxlarge":
-             text.style.fontSize="32pt";
-            break;
-        default:
-             break;
-    }
+    text.style.fontSize=value;
 }
