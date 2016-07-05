@@ -56,6 +56,7 @@
                 newObject.create(txtName.value,txtDeposit.value);
                 listOfObjects.push(newObject);
                 displayNew();
+                clear();
             }
             else{
                 alert("please fill all fields");
@@ -63,7 +64,11 @@
             
         };
     })();
-
+    function clear(){
+        txtName.value="";
+        txtDeposit.value="";
+    }
+ 
     function pageLoad() {
         txtName= document.getElementById("name");
         txtDeposit= document.getElementById("deposit");
