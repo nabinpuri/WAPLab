@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Javascript Scope Exercises</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Javascript Scope Exercises</h1>
+        <div>
+  <ol>          
+<li> <p>Determine what this Javascript code will print out (without running it):</p>
+    <pre>
+x = 1;
+var a = 5;
+var b = 10;
+var c = function(a, b, c) {
+var x = 10;
+document.write(x);
+document.write(a);
+var f = function(a, b, c) {
+b = a;
+document.write(b);
+b = c;
+var x = 5;
+}
+f(a,b,c);
+document.write(b);
+ }
+c(8,9,10);
+document.write(b);
+document.write(x);
+}</pre>
+    <p>Ans:10889101</p>
+</li>
+<li> <p>What is the difference between a method and function?</p>
+    <p>Ans: A function is a piece of code that is called by name. It use parameters to operate on whereas a method is a type of function that is associated to an object. </p>
+</li>
+<li><p>What does 'this' refer to when used in a Java method?</p>
+    <p>
+       this refers to the container class in java method in which the method is inside.
+    </p>
+</li>
+<li><p>What does 'this' refer to when used in a JavaScript method?</p>
+    <p>
+        Inside a function, this points to the container object.
+        <pre> 
+            var item={
+                    a:'2',
+                    b:function(){
+                        console.log(this.a);
+                    }
+            };
+        </pre>
+    </p>
+</li>
+<li><p>What does 'this' refer to when used in a JavaScript function?</p>
+    <p>Ans: 
+        This value of this is determined by how a function is called. Inside a function it refers to the global object.
+    </p>
+</li>
+<li><p>What is a free variable in JavaScript?</p>
+    <p>Ans: A free variable inside a function is a variable that is not a part of its local variables or parameters. </p>
+</li>
+<li><p> Create an object that has properties with name = "fred" and major="music" and a property that is a function
+        that takes 2 numbers and returns the smallest of the two, or the square of the two if they are equal.</p>
+    <p>Ans: 
+        <pre>var compare={
+            name:'fred',
+            major:'music',
+            square: function(a,b){
+                if(a==b) {return 4*a*a; }
+                if(a < b){return a;}
+                else {return b;}
+                
+            }
+        }
+        </pre>
+    </p>
+</li>
+</ol>
+        </div>
+    </body>
+</html>
