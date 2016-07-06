@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Module Exercise</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1><strong>Javascript Module Exercises</strong></h1>
+        <hr>
+        <div>
+            <ol>
+                <li>
+                    
+                    <p>Determine what this Javascript code will print out (without running it):</p>
+                    <pre>
+                            x = 1;
+                            var a = 5;
+                            var b = 10;
+                            var c = function(a, b, c) {
+                                                document.write(x);
+                                                document.write(a);
+                                                var f = function(a, b, c) {
+                                                            b = a;
+                                                            document.write(b);
+                                                            b = c;
+                                                            var x = 5;
+                                                        }
+                                            f(a,b,c);
+                                            document.write(b);
+                                            var x = 10;
+                                    }
+                            c(8,9,10);
+                            document.write(b);
+                            document.write(x);
+                    </pre>
+                    <p>Ans: Undefined889101</p>
+                </li>
+                <li>
+                    <p>Define Global Scope and Local Scope in Javascript.</p>
+                    <p>Ans: Global scope is the scope  in which is accessible to everyone. 
+                        Local scope is the scope bounded within a function but has access to the global scope.</p>
+                </li>
+                <li>
+                    <p>Consider the following structure of Javascript code:</p>
+                    <pre>
+                            // Scope A
+                        function XFunc () {
+                                // Scope B
+                                    function YFunc () {
+                                                // Scope C
+                                    };
+                        };
+                    </pre>
+                    <p>
+                        (a)Do statements in Scope A have access to variables defined in Scope B and C?
+                    </p>
+                    <p>
+                        Ans: Scope A does not have access to variables defined in Scope B and C.
+                    </p>
+                    <p>
+                        (b)Do statements in Scope B have access to variables defined in Scope A?
+                    </p>
+                    <p>
+                        Ans: Yes,Statements in Scope B has  access to variables defined in Scope A.
+                    </p>
+                    <p>
+                        (c)Do statements in Scope B have access to variables defined in Scope C?
+                    </p>
+                    <p>
+                        Ans: No,Statements in Scope B cannot have  access to variables defined in Scope C.
+                    </p>
+                    <p>
+                        (d)Do statements in Scope C have access to variables defined in Scope A?
+                    </p>
+                    <p>
+                        Ans: Yes,Statements in Scope C have  access to variables defined in Scope A.
+                    </p>
+                    
+                    <p>
+                        (e)Do statements in Scope C have access to variables defined in Scope B?
+                    </p>
+                    <p>
+                        Ans: Yes,Statements in Scope C has  access to variables defined in Scope A.
+                    </p>
+                </li>
+                <li>
+                    What will be printed by the following (answer without running it)?
+                    <pre>
+                        var x = 9;
+                        function myFunction() {
+                                return x * x;
+                        }
+                        document.write(myFunction());
+                        x = 5;
+                        document.write(myFunction());
+                        
+                    </pre>
+                    <p>Ans:8125 </p>
+                </li>
+                <li>
+                    <pre>
+                        var foo = 1;
+                        function bar() {
+                                     if (!foo) {
+                                             var foo = 10;
+                                        }
+                                     alert(foo);
+                        }
+                        bar();
+                        What will the alert print out? (Answer without running the code. Remember ‘hoisting’.)?
+                    </pre>
+                    <p>Ans: The alert will print out 10 since due to hoisting, foo is declared first  but while checking the if condition !undefined returns true. </p>
+                </li>
+                <li>
+                    <p> Consider the following definition of an add( ) function to increment a counter variable:</p>
+
+                       <pre> var add = (function () {
+                                var counter = 0;
+                                return function () {
+                                    return counter += 1;
+                              }
+                             })();
+                       </pre>
+                    <p>Modify the above module to define a count object with two methods: add( ) and reset( ). The count.add( ) method
+                        adds one to the counter (as above). The count.reset( ) method sets the counter to 0
+                    </p>
+                    
+                     Ans:
+                    <pre>
+                          var module = (function () {
+                                var counter = 0;
+                                return  {
+                                    add: function(){
+                                                counter += 1;
+                                            },
+                                    reset:function(){
+                                                 counter =0 ;
+                                            }
+                                    }
+                             })();  
+                    </pre>
+                   
+                </li>
+                <li>
+                    <p>In the definition of add( ) shown in question 6, identify the "free" variable. In the context of a function closure,what is a "free" variable?
+                    </p>
+                    <p>
+                        Ans:  Here the counter is the free variable. Free variable is a variable that has not been passed as parameter not been declared in the closure.
+                    </p>
+                </li>
+                <li><p>The add( ) function defined in question 6 always adds 1 to the counter each time it is called. Write a definition
+of a function make_adder(inc), whose return value is an add function with increment value inc (instead of 1). Here
+is an example of using this function:</p>
+                      <pre>  add5 = make_adder(5);
+                        add5( ); add5( ); add5( ); // final counter value is 15
+                        add7 = make_adder(7);
+                        add7( ); add7( ); add7( ); // final counter value is 21
+                      </pre>
+                    Ans:<p>
+                        <pre>var make_adder=(function(no){
+                                var counter=0;
+                                return function () {
+                                     counter += no;
+                                     console.log(counter);
+                                     return counter;
+                              }
+                                
+                        });</pre>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Suppose you are given a file of Javascript code containing a list of many function and variable declarations. All of
+these function and variable names will be added to the Global Javascript namespace. What simple modification to
+the Javascript file can remove all the names from the Global namespace?
+                    </p>
+                    <p>
+                        Ans: We should enclose all the function in closure or separate them into modules removing the need to declare them globally.
+                    </p>
+                </li>
+                <li><p>
+                    Using the Revealing Module Pattern, write a Javascript definition of a Module that creates an Employee Object
+with the following fields and methods:</p>
+                    <pre>
+                    Private Field: name
+                    Private Field: age
+                    Private Field: salary
+                    Public Method: setAge(newAge)
+                    Public Method: setSalary(newSalary)
+                    Public Method: setName(newName)
+                    Private Method: getAge( )
+                    Private Method: getSalary( )
+                    Private Method: getName( )
+                    Public Method: increaseSalary(percentage) // uses private getSalary( )
+                    Public Method: incrementAge( ) // uses private getAge( )
+                    </pre>
+                    Ans: 
+                    <pre>
+                         var module=(function(){
+                            var name;
+                            var age;
+                            var salary;
+                            
+                            var setAge=function(newAge){
+                                            age=newAge;
+                                        };
+                            var setSalary=function(newSalary){
+                                        salary=newSalary;
+                                    };
+                            var setName=function(newName){
+                                name=newName;
+                            };
+                            
+                            var getSalary=function(){
+                                return salary;
+                            };
+                            var getName=function(){
+                                return name;
+                            };
+                            var getAge=function(){
+                                return age;
+                            };
+                            var increaseSalary=function(percentage){
+                                    var sal=getSalary();
+                                    sal=sal + percentage/100*sal;
+                                   
+                                    setSalary(sal);
+                                }
+                            
+                            var incrementAge=function(){
+                                    setAge(getAge()+1);
+                                    
+                                }
+                            
+                            return {
+                                setAge: setAge,
+                                setSalary:setSalary,
+                                setName:setName,
+                                increaseSalary: increaseSalary,
+                                incrementAge:incrementAge
+                            }
+                    })();
+                    </pre>
+                </li>
+                <li>
+                    <p>Rewrite your answer to Question 10 using the Anonymous Object Literal Return Pattern.</p>
+                    Ans: <pre>
+                        var module=(function(){
+                            var name;
+                            var age;
+                            var salary;
+                          
+                            var getAge=function(){
+                                return age;
+                            };
+                            
+                            var getSalary=function(){
+                                return salary;
+                            };
+                            var getName=function(){
+                                return name;
+                            };
+                           
+                            
+                            
+                            return {
+                                setAge: function(newAge){
+                                            age=newAge;
+                                        },
+                                setSalary:function(newSalary){
+                                        salary=newSalary;
+                                    },
+                                setName:function(newName){
+                                         name=newName;
+                                        },
+                                increaseSalary: function(percentage){
+                                    var sal=getSalary();
+                                    
+                                    sal=sal + percentage/100*sal;
+                                    
+                                    this.setSalary(sal);
+                                },
+                                incrementAge:function(){
+                                    this.setAge(getAge()+1);
+                                   
+                                }
+                            };
+             })();
+                    </pre>
+                </li>
+                <li>
+                    <p>
+                        Rewrite your answer to Question 10 using the Stacked Locally Scoped Object Literal Pattern.
+                    </p>
+                    Ans:
+                    <pre>
+                        var module=(function(){
+                            var name;
+                            var age;
+                            var salary;
+                          
+                            var getAge=function(){
+                                return age;
+                            };
+                            
+                            var getSalary=function(){
+                                return salary;
+                            };
+                            var getName=function(){
+                                return name;
+                            };
+                           
+                           var returnObj={
+                                setAge: function(newAge){
+                                            age=newAge;
+                                        },
+                                setSalary:function(newSalary){
+                                        salary=newSalary;
+                                    },
+                                setName:function(newName){
+                                         name=newName;
+                                        },
+                                increaseSalary: function(percentage){
+                                    var sal=getSalary();
+                                   
+                                    sal=sal + percentage/100*sal;
+                                    
+                                    this.setSalary(sal);
+                                },
+                                incrementAge:function(){
+                                    this.setAge(getAge()+1);
+                                   
+                                }
+                            };
+                            
+                            return returnObj;
+                        })();
+                    </pre>
+                </li>
+                <li>
+                    <p>
+                        Write a few Javascript instructions to extend the Module of Question 10 to have a public address field and
+public methods setAddress(newAddress) and getAddress( ).
+                    </p>
+                    Ans: 
+                    <pre>
+                        module.address="";
+                        module.setAddress=function(newAddress){
+                                address=newAddress;
+                            };
+                        module.getAddress=function(){
+                                return address;
+                            };
+                    </pre>
+                </li>
+            </ol>
+
+
+        </div>
+
+    </body>
+</html>
