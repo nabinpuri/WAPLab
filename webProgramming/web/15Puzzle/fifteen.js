@@ -17,6 +17,8 @@
             set: function(xPos,yPos,rowNo,colNo){
                 x=xPos;
                 y=yPos;
+                row=rowNo;
+                column=colNo;
             },
             getX:function(){
                 return x;
@@ -65,9 +67,11 @@
 
        }
        //alert(div);
+       row=i % 4;
+       column=Math.floor(i / 4);
        x=((i % 4) * 100) ;
        y = (Math.floor(i / 4) * 100) ;
-       emptySpace.set(x,y);
+       emptySpace.set(x,y,row,column);
        
     };
     
@@ -95,14 +99,24 @@
     var checkIfNeighbourEmpty= function(thisRow,thisCol){
         var emptyRow=emptySpace.getRow();
         var emptyCol=emptySpace.getColumn();
-        
-        if((thisRow==emptyRow+1)||(thisRow==emptyRow-1)){
-            return true;
-        }
-        if((thisCol==emptyCol+1)||(thisCol==emptyCol-1)){
-            return true;
-        }
-        
+       // alert(emptyRow);
+       
+       if(thisRow==emptyRow){
+           if((thisCol==emptyCol+1)||(thisCol==emptyCol-1)){
+                return true;
+            }
+            else{
+                return false;
+            }
+       }
+       if(thisCol==emptyCol){
+            if((thisRow==emptyRow+1)||(thisRow==emptyRow-1)){
+                return true;
+            }
+            else{
+                return false;
+            }
+       }
         return false; 
     };
 })();
