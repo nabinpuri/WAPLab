@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>jQuery quiz I</title></head>
+<body>
+<h1>JQuery Quiz I</h1>
+	<ol>
+		<li>
+			<p> In jQuery terminology, what is the difference between the "jQuery
+function" and the "jQuery object"? </p>
+<p> Ans:The jquery function is the $ sign that helps to selects the elements in the DOM whereas juery objects is the result returned by the jquery function.</p>
+		</li>
+		<li>
+			<p>Is the jQuery function an object? </p>
+			<p>Ans: The jquery function is both function and object because in javascript all functions are objects.</p>
+		</li>
+		<li>
+			<p>Var f = function() {alert("Yea, it's Saturday!"");}
+Show how you can add a property to f. Let the name of the property be
+"temperature" and set
+the initial value to be "72 degrees".
+Now add a property to f that has a function as its value. This function
+should display the value of the temperature property in an alert.</p>
+			Ans:<pre>
+				
+					var f=function(){
+						alert("Yea, It's saturday");
+					}
+
+					f.temperature="72 degrees";
+					f.display=function(){
+						alert('The temperature is '+this.temperature);
+					}
+			</pre>
+		</li>
+	</ol>
+</body>
+</html>
+
+
+
+

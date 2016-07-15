@@ -1,0 +1,56 @@
+1.
+Find the text in the first paragraph (stripping out the html), then set the
+html of the last paragraph to show it is just text (the red bold is gone).
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>text demo</title>
+<style>
+p {
+color: blue;
+margin: 8px;
+}
+b {
+color: red;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<p><b>Test</b> Paragraph.</p>
+<p></p>
+<script>
+<!—INSERT YOUR JQUERY CODE HERE - - >
+</script>
+</body>
+</html>
+
+
+Ans:
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>text demo</title>
+<style>
+p {
+color: blue;
+margin: 8px;
+}
+b {
+color: red;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<p><b>Test</b> Paragraph.</p>
+<p></p>
+<script>
+    var test=$('p').first().text();
+    $('p').eq(1).text(test);
+</script>
+</body>
+</html>

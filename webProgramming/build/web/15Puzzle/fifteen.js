@@ -3,12 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+"use strict";
 (function(){
+    var isShuffled=false;
     $(document).ready(function(){
       init();
-      $('.puzzlepiece').click(movePiece);
+      $('.puzzlepiece').click(function(){
+          
+          if(checkIfMovable($(this))){
+              swap($(this));
+              if(CheckWon()){
+                  isShuffled=false;
+                  alert("Congrats! You won.......");
+              }
+          }
+      });
+      
+      $('#shufflebutton').click(shuffle);
+      
   });
-   var emptySpace= (function(){
+  
+    var emptySpace= (function(){
         var x;
         var y;
         var row;
@@ -36,7 +51,7 @@
         return object;
     })();
     
-    init = function() {
+    var init = function() {
         var puzzleArea = $('#puzzlearea');
         var divs = puzzleArea.find("div");
         var i=0;
@@ -64,6 +79,9 @@
             
             div.data("row",row); 
             div.data("column",column); 
+            
+            div.data("actualRow",row);
+            div.data("actulaCol",column);
 
        }
        //alert(div);
@@ -73,44 +91,83 @@
        y = (Math.floor(i / 4) * 100) ;
        emptySpace.set(x,y,row,column);
        
+       refreshmovable();
     };
     
-    var movePiece= function(){
+    var swap= function(square){
+          
         //just swap empty with clicked one
-        var tempX=$(this).data("x"); 
-        var tempY=$(this).data("y");
-        var temRow=$(this).data("row");
-        var temCol=$(this).data("column");
+        var tempX= square.data("x"); 
+        var tempY=square.data("y");
+        var temRow=square.data("row");
+        var temCol=square.data("column");
+        //alert("swap...row="+temRow+" col="+temCol);
+       // alert(temRow);
+       // if(checkIfNeighbourEmpty(temRow,temCol)){
+        square.data("x",emptySpace.getX());
+        square.data("y",emptySpace.getY());
+        square.data("row",emptySpace.getRow());
+        square.data("column",emptySpace.getColumn());
         
-        if(checkIfNeighbourEmpty(temRow,temCol)){
-        $(this).data("x",emptySpace.getX());
-        $(this).data("y",emptySpace.getY());
-        $(this).data("row",emptySpace.getRow());
-        $(this).data("column",emptySpace.getColumn());
-        
-        $(this).css({left:emptySpace.getX() + 'px',top: emptySpace.getY() + 'px',
+        square.css({left:emptySpace.getX() + 'px',top: emptySpace.getY() + 'px',
                 backgroundImage:'url("img/background.jpg")'});
         
         emptySpace.set(tempX,tempY,temRow,temCol);
-        }
-        
+        refreshmovable();
+    //}
     };
     
-    var checkIfNeighbourEmpty= function(thisRow,thisCol){
+    var refreshmovable= function(){
+         $('#puzzlearea div').each(function(){
+            //remove exsiting if present
+            $(this).removeClass("movablepiece");
+            if(checkIfMovable($(this))){
+                $(this).addClass("movablepiece");
+            }
+            else{
+                 $(this).removeClass("movablepiece");
+            }
+        });
+    };
+    
+    var CheckWon=function(){
+        var isWon=true;
+        if(!isShuffled){
+            return false;
+        }
+        $('#puzzlearea div').each(function(){
+            var currRow=$(this).data('row');
+            var currCol=$(this).data('column');
+            
+            var actualRow=$(this).data('actualRow');
+            var actualCol=$(this).data('actulaCol');
+          //  console.log(id+":"+curId);
+          //alert("currCol="+currCol+" actualCol="+actualCol);
+            if((currRow!=actualRow)||(currCol!=actualCol)){
+                isWon= false;
+                return;
+            }
+        });
+        
+        return isWon;
+    };
+    
+    var checkIfMovable= function(square){
         var emptyRow=emptySpace.getRow();
         var emptyCol=emptySpace.getColumn();
-       // alert(emptyRow);
+       var temRow=square.data("row");
+       var temCol=square.data("column");
        
-       if(thisRow==emptyRow){
-           if((thisCol==emptyCol+1)||(thisCol==emptyCol-1)){
+       if(temRow==emptyRow){
+           if((temCol==emptyCol+1)||(temCol==emptyCol-1)){
                 return true;
             }
             else{
                 return false;
             }
        }
-       if(thisCol==emptyCol){
-            if((thisRow==emptyRow+1)||(thisRow==emptyRow-1)){
+       if(temCol==emptyCol){
+            if((temRow==emptyRow+1)||(temRow==emptyRow-1)){
                 return true;
             }
             else{
@@ -118,6 +175,18 @@
             }
        }
         return false; 
+    };
+    
+    var shuffle= function(){
+        var suffleCount=0;
+        isShuffled=true;
+        while(suffleCount<=100){    
+            
+           var available=$('.movablepiece');
+           var random=Math.floor(Math.random()*available.length);
+           swap($(available[random]));
+            suffleCount++;
+        }
     };
 })();
  

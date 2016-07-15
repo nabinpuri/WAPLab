@@ -1,0 +1,24 @@
+﻿1. Which, if any, of the following 3 code fragments are equivalent?
+Explain why they are different, if they are. Explain why they can have
+different parameters and be equivalent, if they are equivalent.
+//code fragment 1
+$("li").each(function(idx, e) {
+ $(e).css(â€œcolorâ€, â€œyellowâ€); });
+//code fragment 2
+$("li").each(function() {
+ $(this).css(â€œcolorâ€, â€œyellowâ€); });
+//code fragment 3
+$("li").each(function(idx) {
+ $(this).css(â€œcolorâ€, â€œyellowâ€); });
+ 
+ 
+Ans:
+	All of the above code are equivalent. The functions are being overloaded, by having different parameters. But they all are refering to the same object 
+	either with 'this' or using the e parameter making all the code to do the same task.
+ 
+ 
+2. Write a jQuery expression to find all divs on a page that include
+an unordered list in them, and make their text color be blue.
+
+Ans:
+	$('div').has('ul').css('color','blue');
